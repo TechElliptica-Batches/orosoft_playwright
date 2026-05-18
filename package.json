@@ -1,0 +1,22 @@
+{
+  "name": "orosoft_playwright",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "vaibhav" : "node javascript/json1.js",
+    "sanity" : "npx playwright test -grep=sanity"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "jsonpath": "^1.3.0",
+    "playwright": "^1.59.1",
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0"
+  }
+}

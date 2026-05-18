@@ -1,0 +1,22 @@
+{
+    "students":[
+        {
+            "name" : "vaibhav",
+            "rollNumber": 10,
+            "marks": {
+                "math":10,
+                "science":20,
+                "arts":30
+            }
+        },
+        {
+            "name" : "sachin",
+            "rollNumber": 11,
+            "marks": {
+                "math":40,
+                "science":80,
+                "arts":90
+            }
+        }
+    ]
+}
