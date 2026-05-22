@@ -5,9 +5,10 @@ import { Navigate } from '../pages/Navigate.js';
 
 for(const user of users){
   test(`login for ${user.username} test`, async ({ page }) => {
-    let loginPage = new LoginPage(page);
     let navigate = new Navigate(page);
     navigate.openApp();
+    
+    let loginPage = new LoginPage(page);
     loginPage.login(user.username, user.password);    
   });
 }

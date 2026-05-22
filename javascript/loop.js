@@ -24,14 +24,37 @@
 
 // for loop
 
-const arr = [10,45,38,5]; // 4
+// const arr = [10,45,38,5]; // 4
 
-for(const val of arr){
-    console.log(val)
-}
+// for(const val of arr){
+//     console.log(val)
+// }
 
 // for(let a = 0 ; a < arr.length ; a = a + 1){
 //     console.log(arr[a]);
 // }
 
 // foreach
+
+
+//jump statement
+
+
+// break - stop your process right now 
+// continue - skip the iteration
+
+for(let i = 0;i < 10 ;i++){
+    if( i == 5){
+        continue;
+    }
+    console.log(i);
+}
+
+
+
+
+
+
+
+
+
