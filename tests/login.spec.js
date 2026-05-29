@@ -1,5 +1,10 @@
 import { test, expect } from '@playwright/test';
 
+
+test.describe.configure({
+    mode : "parallel"
+})
+
 test('test', async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
   await page

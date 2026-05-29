@@ -4,6 +4,10 @@ test.beforeEach('before every test', async({page}) =>{
   await page.goto("file:///Users/vaibhavsingh/Desktop/techelliptica-batches/orosoft_playwright/html/test1.html");
 });
 
+test.describe.configure({
+    mode : "serial"
+})
+
 test.describe("test Section 1 ", ()=>{
 
 test('verify username and password fields - @login @smoke @sanity', async({page}) => {
@@ -15,7 +19,6 @@ test('verify username and password fields - @login @smoke @sanity', async({page}
     await page.getByPlaceholder("Enter password").fill("password");
     await page.waitForTimeout(2000);
 
-    
 })
 
 test("verify user able to click on checkbox @checkbox", async({page}) => {
@@ -36,4 +39,65 @@ test("dropdown handing", async({page})=>{
     dropdown.selectOption({value : "IND"})
 });
 
+test("alert handling", async({page})=>{
+    page.on("dialog", async(alert) =>{
+        let msg = await alert.message();
+        expect(msg).toBe("Please fill all mandatory fields");
+        await alert.accept();
+    })
+    await page.locator("button", {hasText:"Submit Form"}).click();
+});
+
+
+test("windows handling", async({page})=>{
+    
+    // page.on("popup", async(window) => {
+    //     await window.waitForLoadState();
+    //     let title =await window.title();
+    //     console.log(title);
+    // });
+
+    const popupWaitPromise = page.waitForEvent("popup");
+    await page.locator("a", {hasText:"Open Google Dashboard"}).click();
+
+    const newWindow = await popupWaitPromise;
+    await newWindow.waitForLoadState();
+    const title = await newWindow.title();
+    //console.log(title);
+    
+    const allPages = await page.context().pages();
+    const currentWindow = null;
+    for(let page of allPages){
+        console.log(await page.title());
+        if(page.title() == "Registration Form"){
+            currentWindow = page;
+        }
+    }
+
+
+
+    // await page.screenshot({
+    //     path:"googledashboard.png",
+    //     fullPage : true
+    // })
+
+    // await newWindow.locator("[aria-label='Sign in']").nth(1).screenshot({
+    //     path : "sign_in_button.png"
+    // })
+
+    // await newWindow.locator("[aria-label='Sign in']").nth(1).click();
+
+});
+
+
+
+// multiple windows
+// event 
+// alert = dialog
+// window =  popup
+
+// 8 testcases. every test case take 2 sec time 
+// worker = 5 
+
+// 4 sec 
 
