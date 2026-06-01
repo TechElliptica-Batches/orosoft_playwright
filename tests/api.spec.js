@@ -1,6 +1,6 @@
 import { test,expect } from '@playwright/test';
 
-test("validate user added successfully", async({request})=>{
+test("validate user added successfully", async({request, page})=>{
     const authResponse = await request.post(
         "http://localhost:4000/api/auth/login",
         {
@@ -53,14 +53,13 @@ test("validate user added successfully", async({request})=>{
     expect(newGetUserResponseJSON).toHaveProperty("email")
     console.log(newGetUserResponseJSON);
 
-
 })
 
 
-// post 
-// get
-// put
-// get
-// delete
-// get
+// post - create a new user
+// get - get new user data
+// put - update some info in new user
+// get - get udpate user data
+// delete - delete user 
+// get - check if user deleted or not
 

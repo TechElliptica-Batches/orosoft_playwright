@@ -37,6 +37,7 @@ test("switching to frame and locating the elemnt", async({page})=>{
 test("dropdown handing", async({page})=>{
     let dropdown = await page.locator("[id='country']")
     dropdown.selectOption({value : "IND"})
+    page.waitForTimeout(5000)
 });
 
 test("alert handling", async({page})=>{
