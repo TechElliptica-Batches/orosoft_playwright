@@ -10,22 +10,6 @@ test.describe.configure({
 
 test.describe("test Section 1 ", ()=>{
 
-<<<<<<< Updated upstream
-=======
-test('upload file', async({page})=>{
-    // await page.locator("[id='upload']").setInputFiles("input-files/test1.txt");
-    
-    const downloadPromise = page.waitForEvent("download");
-    await page.locator("[id='download']").click();
-    const download = await downloadPromise;
-    const fileName = await download.suggestedFilename();
-    await download.saveAs(
-        `download/${fileName}`
-    )
-})
-
-
->>>>>>> Stashed changes
 test('verify username and password fields - @login @smoke @sanity', async({page}) => {
     await expect(page).toHaveTitle("Registration Form");
    // await expect(page).toHaveURL("http://127.0.0.1:5500/html/test1.html")
