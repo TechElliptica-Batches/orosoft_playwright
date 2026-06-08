@@ -1,5 +1,9 @@
 import { test,expect } from '@playwright/test';
 
+test.beforeAll('before all', ()=>{
+
+});
+
 test.beforeEach('before every test', async({page}) =>{
   await page.goto("file:///Users/vaibhavsingh/Desktop/techelliptica-batches/orosoft_playwright/html/test1.html");
 });
@@ -10,27 +14,64 @@ test.describe.configure({
 
 test.describe("test Section 1 ", ()=>{
 
+test('upload file', async({page})=>{
+    await page.locator("[id='upload']").setInputFiles("input-files/test1.txt");
+})
+
+
 test('verify username and password fields - @login @smoke @sanity', async({page}) => {
     await expect(page).toHaveTitle("Registration Form");
-   // await expect(page).toHaveURL("http://127.0.0.1:5500/html/test1.html")
-    await expect(page.locator("h1")).toHaveText("User Registration Form");
+    // await expect(page).toHaveURL("http://127.0.0.1:5500/html/test1.html")
+    await expect.soft(page.locator("h1")).toHaveText("User Registration Form");
+    
+    console.log("asdfasd");
+
+// assertion - validation 
+// hard assertion - validation - failed. No next step execution
+// soft assertion - execution keep on even if validation is failed
+// login screen
+// username, passwrod, login button
+// profile screen
+// name, email, mobile, education
+
+
+
     await page.getByPlaceholder("Enter username").fill("vaibhav");
     await page.waitForTimeout(2000);
     await page.getByPlaceholder("Enter password").fill("password");
     await page.waitForTimeout(2000);
 
+    await page.keyboard.press("Control+A")
+
+
+
+
+// Keyboard
+
+    
 })
 
 test("verify user able to click on checkbox @checkbox", async({page}) => {
-    await page.locator("//label[text()='Education']/..").getByLabel("10th").click();
+    await page.locator("//label[text()='Education']/..").getByLabel("10th").click({button:"right", clickCount : 5, delay : 1000})
+
+    //page.locator("//label[text()='Education']/..").dragTo(page.locator(""))
     // locator chaining
+    // Hover 
+
+
+
+    page.mouse.move(500, 600, {steps: 20})
+
 })
+
+
 
 });
 
 
-test("switching to frame and locating the elemnt", async({page})=>{
+test("switching to frame and locating the elemnt ", async({page})=>{
     let myFrame = await page.frameLocator("[id='myframe']");
+    await myFrame.locator("[id='searchInput']").hover();
     await myFrame.locator("[id='searchInput']").fill("Frame data");
 });
 
@@ -39,6 +80,8 @@ test("dropdown handing", async({page})=>{
     dropdown.selectOption({value : "IND"})
     page.waitForTimeout(5000)
 });
+
+// download and upload
 
 test("alert handling", async({page})=>{
     page.on("dialog", async(alert) =>{
