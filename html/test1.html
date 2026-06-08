@@ -196,11 +196,22 @@
 <div class="container">
 
     <h1>User Registration Form</h1>
+    <div class="form-group">            
+        <button style="width:200px;" onclick="downloadFile();" id="download">Download File</button>
+    </div>
 
     <form id="registrationForm">
 
         <div class="form-grid">
 
+<<<<<<< Updated upstream
+=======
+            
+
+            
+
+            
+>>>>>>> Stashed changes
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" id="username" placeholder="Enter username">
@@ -358,6 +369,25 @@
 
     });
 
+</script>
+
+<script>
+function downloadFile() {
+    const content = "Welcome to Playwright Automation";
+    
+    const blob = new Blob([content], { type: "text/plain" });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "report.txt";
+
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+}
 </script>
 
 </body>
