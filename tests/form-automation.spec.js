@@ -10,12 +10,12 @@ test.describe.configure({
 
 test.describe("test Section 1 ", ()=>{
 
-
     test('upload file', async({page})=>{
     // await page.locator("[id='upload']").setInputFiles("input-files/test1.txt");
     
     const downloadPromise = page.waitForEvent("download");
     await page.locator("[id='download']").click();
+    await page.locator("#download").click();
     const download = await downloadPromise;
     const fileName = await download.suggestedFilename();
     await download.saveAs(
@@ -31,6 +31,17 @@ test('verify username and password fields - @login @smoke @sanity', async({page}
     await page.getByPlaceholder("Enter username").fill("vaibhav");
     await page.waitForTimeout(2000);
     await page.getByPlaceholder("Enter password").fill("password");
+
+    // Allure Report
+    // allure report lib
+
+    await page.locator("#dob").fill("10/21/2012");
+    // CSS Selector - 
+    // id = #
+    // class = .
+    // XPath - start-with contains text, 
+    // following
+
     await page.waitForTimeout(2000);
 
 })
