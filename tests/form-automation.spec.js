@@ -1,5 +1,9 @@
 import { test,expect } from '@playwright/test';
 
+test.beforeAll('before all testcase execution', ()=>{
+    
+})
+
 test.beforeEach('before every test', async({page}) =>{
   await page.goto("file:///Users/vaibhavsingh/Desktop/techelliptica-batches/orosoft_playwright/html/test1.html");
 });
@@ -16,6 +20,8 @@ test.describe("test Section 1 ", ()=>{
     const downloadPromise = page.waitForEvent("download");
     await page.locator("[id='download']").click();
     await page.locator("#download").click();
+expect(page.locator("alert")).toBeVisible({timeout: 6000});
+
     const download = await downloadPromise;
     const fileName = await download.suggestedFilename();
     await download.saveAs(

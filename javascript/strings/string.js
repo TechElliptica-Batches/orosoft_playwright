@@ -10,7 +10,8 @@
 //     console.log(ch);
 // }
 
-
+// F5
+// fn + F5
 
 let text = "Hello this is javascript string";
 console.log(text.length)

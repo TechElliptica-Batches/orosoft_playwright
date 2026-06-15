@@ -199,15 +199,25 @@
     <div class="form-group">            
         <button style="width:200px;" onclick="downloadFile();" id="download">Download File</button>
     </div>
+        <div>
+                <label>Username</label>
+                <input type="text">
+            </div>
 
-    <form id="registrationForm">
+
+
+    <div class="form-group">
+        <button id="testbutton"> event button </button>
+    </div>
+
+
+    <form id="registrationForm" action="" >
 
         <div class="form-grid">
 
             <div class="form-group">
                 <input type="file" id="upload">
             </div>
-
 
             <div class="form-group">
                 <label>Username</label>
@@ -346,6 +356,18 @@
 
 <script>
 
+    const testButtonObject = document.getElementById("testbutton");
+    testButtonObject.addEventListener("click", function(event){
+        alert("hello this a event alert");
+    });
+
+    testButtonObject.addEventListener("mouseout", function(event){
+        console.log("hello this a mouseover");
+    });
+
+
+
+
     const form = document.getElementById("registrationForm");
 
     form.addEventListener("submit", function(event){
@@ -390,6 +412,9 @@ function downloadFile() {
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
 }
+
+
+
 </script>
 
 </body>

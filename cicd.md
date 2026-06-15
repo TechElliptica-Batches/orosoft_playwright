@@ -21,15 +21,12 @@ sanity testing
 retesting 
 smoke -> sanity (new functionality) -> regression
 
-
-
 use case 
 9 - 6PM
 5pm IST - build
 9AM - 12 - 1 bug
 1PM raise developer
 5PM ->.  20 hours
-
 
 4 hour
 5pm IST - build

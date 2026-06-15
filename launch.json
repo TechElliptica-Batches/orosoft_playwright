@@ -1,0 +1,8 @@
+{
+    "type": "node",
+    "request": "launch",
+    "name": "Playwright Test",
+    "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
+    "args": ["test"],
+    "console": "integratedTerminal"
+}
