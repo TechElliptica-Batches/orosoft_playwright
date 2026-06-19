@@ -1,7 +1,6 @@
 var a: number = 10;
 var b: string= "vaibhav"
 var c: boolean = true
-
 var k: any = 10;
 
 
@@ -12,8 +11,7 @@ let d: number[] = [10,20,40]
 let e : Array<number> = [10,20,30,50]
 
 // Array - increase, decrease
-
-// Tuple
+// Tuple - immutable collection
 // constant (you cannot change ref), immutable (collection cant be change)
 
 const ar: number[] = [10,30,40];

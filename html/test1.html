@@ -160,6 +160,58 @@
             background:#eff6ff;
         }
 
+        tbody tr.hidden-row{
+            display:none;
+        }
+
+        .pagination{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:10px;
+            margin-top:20px;
+            flex-wrap:wrap;
+        }
+
+        .pagination button{
+            width:auto;
+            min-width:42px;
+            padding:10px 16px;
+            background:#e2e8f0;
+            color:#334155;
+            border:2px solid transparent;
+            border-radius:10px;
+            font-size:14px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.25s;
+        }
+
+        .pagination button:hover{
+            background:#cbd5e1;
+            transform:none;
+            box-shadow:none;
+        }
+
+        .pagination button.active{
+            background:linear-gradient(to right,#2563eb,#06b6d4);
+            color:white;
+            border-color:#2563eb;
+            box-shadow:0 4px 12px rgba(37,99,235,0.35);
+        }
+
+        .pagination button:disabled{
+            opacity:0.45;
+            cursor:not-allowed;
+        }
+
+        .pagination-info{
+            text-align:center;
+            margin-top:10px;
+            color:#64748b;
+            font-size:14px;
+        }
+
         iframe{
             width:100%;
             height:180px;
@@ -311,7 +363,7 @@
 
     <div class="table-section">
 
-        <table>
+        <table id="userTable">
 
             <thead>
                 <tr>
@@ -321,7 +373,7 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="tableBody">
                 <tr>
                     <td>John</td>
                     <td>UK</td>
@@ -346,9 +398,49 @@
                     <td>Designer</td>
                 </tr>
 
+                <tr>
+                    <td>Carlos</td>
+                    <td>Spain</td>
+                    <td>Architect</td>
+                </tr>
+
+                <tr>
+                    <td>Yuki</td>
+                    <td>Japan</td>
+                    <td>Analyst</td>
+                </tr>
+
+                <tr>
+                    <td>Sophie</td>
+                    <td>France</td>
+                    <td>Teacher</td>
+                </tr>
+
+                <tr>
+                    <td>Ahmed</td>
+                    <td>Egypt</td>
+                    <td>Manager</td>
+                </tr>
+
+                <tr>
+                    <td>Maria</td>
+                    <td>Brazil</td>
+                    <td>Consultant</td>
+                </tr>
+
             </tbody>
 
         </table>
+
+        <div class="pagination" id="pagination">
+            <button type="button" id="prevPage" aria-label="Previous page">Prev</button>
+            <button type="button" class="page-btn active" data-page="1">1</button>
+            <button type="button" class="page-btn" data-page="2">2</button>
+            <button type="button" class="page-btn" data-page="3">3</button>
+            <button type="button" id="nextPage" aria-label="Next page">Next</button>
+        </div>
+
+        <p class="pagination-info" id="paginationInfo">Showing 1–3 of 9 entries</p>
 
     </div>
 
@@ -393,6 +485,55 @@
 
     });
 
+</script>
+
+<script>
+(function () {
+    const rowsPerPage = 3;
+    const tableBody = document.getElementById("tableBody");
+    const rows = Array.from(tableBody.querySelectorAll("tr"));
+    const pageButtons = document.querySelectorAll(".page-btn");
+    const prevBtn = document.getElementById("prevPage");
+    const nextBtn = document.getElementById("nextPage");
+    const paginationInfo = document.getElementById("paginationInfo");
+    const totalPages = pageButtons.length;
+    let currentPage = 1;
+
+    function showPage(page) {
+        currentPage = page;
+        const start = (page - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+
+        rows.forEach((row, index) => {
+            row.classList.toggle("hidden-row", index < start || index >= end);
+        });
+
+        pageButtons.forEach((btn) => {
+            btn.classList.toggle("active", Number(btn.dataset.page) === page);
+        });
+
+        prevBtn.disabled = page === 1;
+        nextBtn.disabled = page === totalPages;
+
+        const showingFrom = rows.length === 0 ? 0 : start + 1;
+        const showingTo = Math.min(end, rows.length);
+        paginationInfo.textContent = `Showing ${showingFrom}–${showingTo} of ${rows.length} entries (Page ${page} of ${totalPages})`;
+    }
+
+    pageButtons.forEach((btn) => {
+        btn.addEventListener("click", () => showPage(Number(btn.dataset.page)));
+    });
+
+    prevBtn.addEventListener("click", () => {
+        if (currentPage > 1) showPage(currentPage - 1);
+    });
+
+    nextBtn.addEventListener("click", () => {
+        if (currentPage < totalPages) showPage(currentPage + 1);
+    });
+
+    showPage(1);
+})();
 </script>
 
 <script>

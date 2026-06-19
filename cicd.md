@@ -92,3 +92,21 @@ BDD framework
 automation framework - robust 
 team - capability (AI - GenAI)
 SDET 
+
+practice - local 
+devops - 
+java 21 
+jenkins
+
+
+
+john - pune
+samir - mumbai
+vaibhav - delhi
+pooja - delhi
+
+
+vaibhav - delhi
+samir - mumbai
+john - pune
+pooja - delhi

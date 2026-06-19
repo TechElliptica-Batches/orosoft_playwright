@@ -13,7 +13,7 @@ UI fixture
 import { test, expect } from '@playwright/test';
 
 
-test("fixture demo", async({browser, context, page})=>{
+test("fixture demo @jira-1678 @story-1920", async({browser, context, page})=>{
 
     let context1 = await browser.newContext();
     let page1 = await context1.newPage();

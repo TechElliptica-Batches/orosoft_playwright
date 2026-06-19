@@ -5,7 +5,7 @@ test.beforeAll('before all testcase execution', ()=>{
 })
 
 test.beforeEach('before every test', async({page}) =>{
-  await page.goto("file:///Users/vaibhavsingh/Desktop/techelliptica-batches/orosoft_playwright/html/test1.html");
+  await page.goto(process.env.BASE_URL);
 });
 
 test.describe.configure({
@@ -79,6 +79,11 @@ test("alert handling", async({page})=>{
     })
     await page.locator("button", {hasText:"Submit Form"}).click();
 });
+
+test("table filter" , async({page})=>{
+    const rajCountry =  await page.locator("tr").filter({hasText: 'Raj'}).locator("td").nth(1).textContent();
+    await page.locator("//td[text()='Raj']/following-sibling::td[1]").textContent();
+})
 
 
 test("windows handling", async({page})=>{

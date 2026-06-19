@@ -1,0 +1,10 @@
+Jun 15, 2026 11:31:09 AM hudson.remoting.Launcher createEngine
+INFO: Setting up agent: Vaibhav - Window Machine Orosoft-demo
+Jun 15, 2026 11:31:09 AM hudson.remoting.Engine startEngine
+INFO: Using Remoting version: 3352.v17a_fb_4b_2773f
+Jun 15, 2026 11:31:09 AM org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
+INFO: Using /Users/vaibhavsingh/Desktop/techelliptica-batches/orosoft_playwright/jenkins/remoting as a remoting work directory
+Jun 15, 2026 11:31:09 AM hudson.remoting.Launcher$CuiListener status
+INFO: WebSocket connection open
+Jun 15, 2026 11:31:09 AM hudson.remoting.Launcher$CuiListener status
+INFO: Connected
